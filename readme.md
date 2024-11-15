@@ -3,8 +3,8 @@
 
 ## Установка
 ```shell
-$ git clone https://github.com/GSPVK/DjangoDRF-blog
-$ cd DjangoDRF-blog
+$ git clone https://github.com/GSPVK/vangertz
+$ cd vangertz
 $ pip install -r req.pip
 $ python manage.py migrate
 $ python manage.py createsuperuser
