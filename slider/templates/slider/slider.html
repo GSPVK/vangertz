@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+{% load static thumbnail %}
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Космическое агентство</title>
+
+  <link rel="stylesheet" href="{% static 'slider/css/bootstrap.min.css' %}"/>
+  <link rel="stylesheet" href="{% static 'slider/css/slick.css' %}"/>
+  <link rel="stylesheet" href="{% static 'slider/css/slick-theme.css' %}"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="{% static 'slider/css/styles.css' %}"/>
+
+  <script src="{% static 'slider/js/jquery-3.7.1.min.js' %}"></script>
+  <script src="{% static 'slider/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'slider/js/slick.min.js' %}"></script>
+  <script src="{% static 'slider/js/fancybox.min.js' %}"></script>
+</head>
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <!-- Бургер навбара -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Наса лого -->
+    <a class="navbar-brand" href="#">
+      <img src="{% static 'slider/images/nasa_vector.svg' %}"width="120" height="34"/>
+    </a>
+
+    <!-- Offcanvas -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">Меню</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <hr style="color:white; margin-top:0">
+        <ul class="navbar-nav justify-content-center flex-grow-1">
+          <li class="nav-item">
+            <a class="nav-link" href="#advantages">ПРЕИМУЩЕСТВА</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#photos">ФОТОГРАФИИ</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="d-flex align-items-center ms-auto">
+      <button class="btn btn-login">ВХОД</button>
+    </div>
+  </div>
+</nav>
+
+<header class="header">
+  <div class="container">
+    <h1>Космическое агентство</h1>
+      <p>Национальное управление по аэронавтике и исследованию космического пространства —
+        ведомство, относящееся к
+        федеральному правительству США и подчиняющееся непосредственно президенту США.</p>
+  </div>
+</header>
+
+
+<!-- Преимущества -->
+<section class="advantages" id="advantages">
+  <div class="container">
+    <div class="row">
+      <!-- Left side features -->
+      <div class="col-lg-6 d-flex align-items-center justify-content-lg-end">
+        <div class="row w-100">
+          <div class="col-6 col-sm-6 mb-4 d-flex justify-content-center">
+            <div class="text-center">
+              <img src="{% static 'slider/images/fa6-solid_shuttle-space.svg' %}" class="mb-3" width="65" height="65"/>
+              <p class="fw-bold">Спейс шаттлы — пилотируемые корабли</p>
+            </div>
+          </div>
+          <div class="col-6 col-sm-6 mb-4 d-flex justify-content-center">
+            <div class="text-center">
+              <img src="{% static 'slider/images/ion_telescope.svg' %}" class="mb-3" width="65" height="65"/>
+              <p class="fw-bold">Лучшее телескопическое оборудование</p>
+            </div>
+          </div>
+          <div class="col-6 col-sm-6 mb-4 d-flex justify-content-center">
+            <div class="text-center">
+              <img src="{% static 'slider/images/bi_moon-stars-fill.svg' %}" class="mb-3" width="65" height="65"/>
+              <p class="fw-bold">Целимся на Луну и Марс</p>
+            </div>
+          </div>
+          <div class="col-6 col-sm-6 mb-4 d-flex justify-content-center">
+            <div class="text-center">
+              <img src="{% static 'slider/images/bxs_medal.svg' %}" class="mb-3" width="65" height="65"/>
+              <p class="fw-bold">Золотая медаль по научным исследованиям</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Картинка справа -->
+      <div class="col-lg-6 d-flex align-items-center justify-content-center">
+        <img src="{% static 'slider/images/right_image.png' %}" alt="Space" style="max-width: 100%"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Слайдер http://kenwheeler.github.io/slick/ (см. Slider Syncing) -->
+<section class="slider-container text-center" style="padding: 50px 0;">
+  <h2 style="color: white;" id="photos">Фотографии</h2>
+  <div class="container">
+    <div class="slider-for">
+      {% for item in slider_items %}
+      <div>
+        <a href="{{ item.image.url }}" data-fancybox="gallery">
+          <!-- Прямоугольное изображение для десктопа -->
+          <img src="{% thumbnail item.image 750x420 crop='smart' %}"
+               alt="{{ item.title }}"
+               class="image-desktop round border-dark-1 mx-auto d-block shadow-lg">
+
+          <!-- Квадратное изображение для мобильных устройств -->
+          <img src="{% thumbnail item.image 750x750 crop='smart' %}"
+               alt="{{ item.title }}"
+               class="image-mobile round border-dark-1 mx-auto d-block shadow-lg">
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="slider-nav center p-0 d-flex justify-content-center">
+      {% for item in slider_items %}
+      <div class="d-flex justify-content-center">
+        <img src="{% thumbnail item.image 165x165 crop='smart' %}"
+             alt="{{ item.title }}"
+             class="round d-flex justify-content-center">
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('.slider-for').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: false,
+      fade: true,
+      asNavFor: '.slider-nav',
+    });
+    $('.slider-nav').slick({
+      slidesToShow: 5,
+      slidesToScroll: 1,
+      centerPadding: '40px',
+      infinite: true,
+      centerMode: true,
+      focusOnSelect: true,
+      asNavFor: '.slider-for',
+      prevArrow: `<button class="slick-prev" aria-label="Previous" type="button">
+                    <img src="{% static 'slider/images/arrow_left.svg' %}" alt="Previous">
+                  </button>`,
+      nextArrow: `<button class="slick-next" aria-label="Next" type="button">
+                    <img src="{% static 'slider/images/arrow_right.svg' %}" alt="Next">
+                  </button>`,
+      responsive: [
+        {
+          breakpoint: 992,
+          settings: {
+            arrows: false,
+            centerMode: true,
+            centerPadding: '40px',
+            slidesToShow: 3
+          }
+        },
+        {
+          breakpoint: 367,
+          settings: {
+            arrows: false,
+            centerMode: true,
+            centerPadding: '40px',
+            slidesToShow: 1
+          }
+        }
+      ]
+    });
+  });
+</script>
+<script type="text/javascript">
+  $('[data-fancybox]').fancybox({
+    loop: true,
+  });
+</script>
+
+</body>
+</html>
