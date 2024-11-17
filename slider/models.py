@@ -3,9 +3,9 @@ from filer.fields.image import FilerImageField
 
 
 class SliderItem(models.Model):
-    title = models.CharField('Title', max_length=100)
+    title = models.CharField('Название', max_length=100)
     image = FilerImageField(related_name='slider_images', on_delete=models.CASCADE)
-    order = models.PositiveIntegerField(default=0, blank=False, null=False, db_index=True)  # adminsortable
+    order = models.PositiveIntegerField('Порядок', default=0, blank=False, null=False, db_index=True)  # adminsortable
 
     class Meta:
         ordering = ('order',)
