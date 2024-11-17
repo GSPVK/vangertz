@@ -119,12 +119,12 @@
       <div>
         <a href="{{ item.image.url }}" data-fancybox="gallery">
           <!-- Прямоугольное изображение для десктопа -->
-          <img src="{% thumbnail item.image 750x420 crop='smart' %}"
+          <img src="{% thumbnail item.image 'desktop_preview' %}"
                alt="{{ item.title }}"
                class="image-desktop round border-dark-1 mx-auto d-block shadow-lg">
 
           <!-- Квадратное изображение для мобильных устройств -->
-          <img src="{% thumbnail item.image 750x750 crop='smart' %}"
+          <img src="{% thumbnail item.image 'mobile_preview' %}"
                alt="{{ item.title }}"
                class="image-mobile round border-dark-1 mx-auto d-block shadow-lg">
         </a>
