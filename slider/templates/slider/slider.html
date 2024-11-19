@@ -19,6 +19,7 @@
   <script src="{% static 'slider/js/fancybox.min.js' %}"></script>
 </head>
 
+<body>
 <nav class="navbar navbar-expand-lg">
   <div class="container">
     <!-- Бургер навбара -->
@@ -29,7 +30,7 @@
 
     <!-- Наса лого -->
     <a class="navbar-brand" href="#">
-      <img src="{% static 'slider/images/nasa_vector.svg' %}"width="120" height="34"/>
+      <img src="{% static 'slider/images/nasa_vector.svg' %}" width="120" height="34"/>
     </a>
 
     <!-- Offcanvas -->
@@ -57,91 +58,94 @@
   </div>
 </nav>
 
-<header class="header">
-  <div class="container">
-    <h1>Космическое агентство</h1>
+<main>
+  <header class="header">
+    <div class="container">
+      <h1>Космическое агентство</h1>
       <p>Национальное управление по аэронавтике и исследованию космического пространства —
         ведомство, относящееся к
         федеральному правительству США и подчиняющееся непосредственно президенту США.</p>
-  </div>
-</header>
+    </div>
+  </header>
 
 
-<!-- Преимущества -->
-<section class="advantages" id="advantages">
-  <div class="container">
-    <div class="row">
-      <!-- Left side features -->
-      <div class="col-lg-6 d-flex align-items-center justify-content-lg-end">
-        <div class="row w-100">
-          <div class="col-6 col-sm-6 mb-4 d-flex justify-content-center">
-            <div class="text-center">
-              <img src="{% static 'slider/images/fa6-solid_shuttle-space.svg' %}" class="mb-3" width="65" height="65"/>
-              <p class="fw-bold">Спейс шаттлы — пилотируемые корабли</p>
+  <!-- Преимущества -->
+  <section class="advantages" id="advantages">
+    <div class="container">
+      <div class="row">
+        <!-- Left side features -->
+        <div class="col-lg-6 d-flex align-items-center justify-content-lg-end">
+          <div class="row w-100">
+            <div class="col-6 col-sm-6 mb-4 d-flex justify-content-center">
+              <div class="text-center">
+                <img src="{% static 'slider/images/fa6-solid_shuttle-space.svg' %}" class="mb-3" width="65"
+                     height="65"/>
+                <p class="fw-bold">Спейс шаттлы — пилотируемые корабли</p>
+              </div>
             </div>
-          </div>
-          <div class="col-6 col-sm-6 mb-4 d-flex justify-content-center">
-            <div class="text-center">
-              <img src="{% static 'slider/images/ion_telescope.svg' %}" class="mb-3" width="65" height="65"/>
-              <p class="fw-bold">Лучшее телескопическое оборудование</p>
+            <div class="col-6 col-sm-6 mb-4 d-flex justify-content-center">
+              <div class="text-center">
+                <img src="{% static 'slider/images/ion_telescope.svg' %}" class="mb-3" width="65" height="65"/>
+                <p class="fw-bold">Лучшее телескопическое оборудование</p>
+              </div>
             </div>
-          </div>
-          <div class="col-6 col-sm-6 mb-4 d-flex justify-content-center">
-            <div class="text-center">
-              <img src="{% static 'slider/images/bi_moon-stars-fill.svg' %}" class="mb-3" width="65" height="65"/>
-              <p class="fw-bold">Целимся на Луну и Марс</p>
+            <div class="col-6 col-sm-6 mb-4 d-flex justify-content-center">
+              <div class="text-center">
+                <img src="{% static 'slider/images/bi_moon-stars-fill.svg' %}" class="mb-3" width="65" height="65"/>
+                <p class="fw-bold">Целимся на Луну и Марс</p>
+              </div>
             </div>
-          </div>
-          <div class="col-6 col-sm-6 mb-4 d-flex justify-content-center">
-            <div class="text-center">
-              <img src="{% static 'slider/images/bxs_medal.svg' %}" class="mb-3" width="65" height="65"/>
-              <p class="fw-bold">Золотая медаль по научным исследованиям</p>
+            <div class="col-6 col-sm-6 mb-4 d-flex justify-content-center">
+              <div class="text-center">
+                <img src="{% static 'slider/images/bxs_medal.svg' %}" class="mb-3" width="65" height="65"/>
+                <p class="fw-bold">Золотая медаль по научным исследованиям</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Картинка справа -->
-      <div class="col-lg-6 d-flex align-items-center justify-content-center">
-        <img src="{% static 'slider/images/right_image.png' %}" alt="Space" style="max-width: 100%"/>
+        <!-- Картинка справа -->
+        <div class="col-lg-6 d-flex align-items-center justify-content-center">
+          <img src="{% static 'slider/images/right_image.png' %}" alt="Space" style="max-width: 100%"/>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
 
-<!-- Слайдер http://kenwheeler.github.io/slick/ (см. Slider Syncing) -->
-<section class="slider-container text-center" style="padding: 50px 0;">
-  <h2 style="color: white;" id="photos">Фотографии</h2>
-  <div class="container">
-    <div class="slider-for">
-      {% for item in slider_items %}
-      <div>
-        <a href="{{ item.image.url }}" data-fancybox="gallery">
-          <!-- Прямоугольное изображение для десктопа -->
-          <img src="{% thumbnail item.image 'desktop_preview' %}"
+  <!-- Слайдер http://kenwheeler.github.io/slick/ (см. Slider Syncing) -->
+  <section class="slider-container text-center" style="padding: 50px 0;">
+    <h2 style="color: white;" id="photos">Фотографии</h2>
+    <div class="container">
+      <div class="slider-for">
+        {% for item in slider_items %}
+        <div>
+          <a href="{{ item.image.url }}" data-fancybox="gallery">
+            <!-- Прямоугольное изображение для десктопа -->
+            <img src="{% thumbnail item.image 'desktop_preview' %}"
+                 alt="{{ item.title }}"
+                 class="image-desktop round border-dark-1 mx-auto d-block shadow-lg">
+
+            <!-- Квадратное изображение для мобильных устройств -->
+            <img src="{% thumbnail item.image 'mobile_preview' %}"
+                 alt="{{ item.title }}"
+                 class="image-mobile round border-dark-1 mx-auto d-block shadow-lg">
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="slider-nav center p-0 d-flex justify-content-center">
+        {% for item in slider_items %}
+        <div class="d-flex justify-content-center">
+          <img src="{% thumbnail item.image 165x165 crop='smart' %}"
                alt="{{ item.title }}"
-               class="image-desktop round border-dark-1 mx-auto d-block shadow-lg">
-
-          <!-- Квадратное изображение для мобильных устройств -->
-          <img src="{% thumbnail item.image 'mobile_preview' %}"
-               alt="{{ item.title }}"
-               class="image-mobile round border-dark-1 mx-auto d-block shadow-lg">
-        </a>
+               class="round d-flex justify-content-center">
+        </div>
+        {% endfor %}
       </div>
-      {% endfor %}
     </div>
-    <div class="slider-nav center p-0 d-flex justify-content-center">
-      {% for item in slider_items %}
-      <div class="d-flex justify-content-center">
-        <img src="{% thumbnail item.image 165x165 crop='smart' %}"
-             alt="{{ item.title }}"
-             class="round d-flex justify-content-center">
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-</section>
+  </section>
+</main>
 
 <script type="text/javascript">
   $(document).ready(function () {
