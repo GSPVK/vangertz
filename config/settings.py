@@ -161,7 +161,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 THUMBNAIL_ALIASES = {
     '': {
         'admin_preview': {'size': (100, 100), 'crop': True},
-        'desktop_preview': {'size': (750, 420), 'crop': 'smart'},
-        'mobile_preview': {'size': (750, 750), 'crop': 'smart'},
     },
 }

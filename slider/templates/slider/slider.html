@@ -120,16 +120,16 @@
       <div class="slider-for">
         {% for item in slider_items %}
         <div>
-          <a href="{{ item.image.url }}" data-fancybox="gallery">
-            <!-- Прямоугольное изображение для десктопа -->
-            <img src="{% thumbnail item.image 'desktop_preview' %}"
-                 alt="{{ item.title }}"
-                 class="image-desktop round border-dark-1 mx-auto d-block shadow-lg">
-
-            <!-- Квадратное изображение для мобильных устройств -->
-            <img src="{% thumbnail item.image 'mobile_preview' %}"
-                 alt="{{ item.title }}"
-                 class="image-mobile round border-dark-1 mx-auto d-block shadow-lg">
+          <a href="{% thumbnail item.image 750x420 crop='smart' %}" data-fancybox="gallery">
+            <img
+              src="{% thumbnail item.image 750x420 crop='smart' %}"
+              srcset="{% thumbnail item.image 420x420 crop='smart' %} 420w,
+                      {% thumbnail item.image 750x420 crop='smart' %} 750w"
+              sizes="(max-width: 992px) 420px,
+                     750px"
+              alt="{{ item.title }}"
+              class="round border-dark-1 mx-auto d-block shadow-lg"
+            />
           </a>
         </div>
         {% endfor %}
